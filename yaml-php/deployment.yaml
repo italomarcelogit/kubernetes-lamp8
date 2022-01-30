@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: imc-lamp7
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: imc-lamp7
+  template:
+    metadata:
+      labels:
+        app: imc-lamp7
+    spec:
+      containers:
+      - name: imc-lamp7
+        image: italomarcelo/lamp7:basic
+        ports:
+        - containerPort: 80 # porta do serviço (targetport)
