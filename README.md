@@ -54,9 +54,7 @@ Este exemplo foi criado em um pc local com:
 # VAMOS EXECUTAR AGORA ESSA APLICAÇÃO NA SUA MÁQUINA
 * instale todas as aplicações comentadas anteriormente
 * abra o docker desktop e, em configurações, veja se o kubernetes está ativo. Senão tiver, ative-o
-* para criar o cluster, basta acionar o script cluster.bat
-  + cluster.bat start meucluster
-* aguarde a conclusão e após isso, execute o comando kube.bat start
+* execute o comando kube.bat start
 * aguarde alguns instantes execute o seguinte comando kube.bat [sem nenhuma ação] ou o comando kubectl get deploymnts até obter o resultado abaixo:
 ![ScreenShot](PNGs/kubectl-deploy.png)
 
