@@ -58,7 +58,7 @@ Este exemplo foi criado em um pc local com:
   + cluster.bat start meucluster
 * aguarde a conclusão e após isso, execute o comando kube.bat start
 * aguarde alguns instantes execute o seguinte comando kube.bat [sem nenhuma ação] ou o comando kubectl get deploymnts até obter o resultado abaixo:
-![ScreenShot](PNGs/kubectl.png)
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 * Nosso setup está configurado para ter:
   + 1 pod para o db, 3 pods para o lamp e 1 pod para o phpmyadmin. 
