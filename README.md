@@ -28,8 +28,9 @@ Este exemplo foi criado em um pc local com:
 * contém o manifesto service.yaml que cria e sobe o serviço web (apache e php)
   + subirá o serviço na porta padrão 8080
   + neste exemplo, subiremos o serviço em nodeport, ou seja, além dos hosts do cluster, o seu PC também terá acesso ao serviço
-  + Quando subimos um ambiente kubernetes, essa aplicação tem que estar disponível para a internet ou seja, LoadBalancer. 
-  + Então, para subir a aplicação em loadbalancer, deixei comentado no script. Neste caso, é só comentar o trecho nodePort e descomentar o LoadBalancer
+  + quando subimos um ambiente kubernetes, essa aplicação tem que estar disponível para a internet ou seja, LoadBalancer. 
+  + então, para subir a aplicação em loadbalancer, deixei comentado no script. Neste caso, é só comentar o trecho nodePort e descomentar o LoadBalancer
+  * caso queira fazer um teste com a imagem em docker-compose, acesse meu repositório e procure por **docker-lamp-basic**
 
 ### diretório yaml-pma/
 * contém o manifesto deployment.yaml que cria o deployment para subir 1 pod o serviço de PHPMyAdmin
