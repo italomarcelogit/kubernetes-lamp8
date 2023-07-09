@@ -1,5 +1,5 @@
-# kubernetes + Docker - linux | mariadb | php | phppyadmin
-### Exemplo de implementação de containers docker em um ambiente kubernetes
+# Implantando aplicação web, em microsserviços, utilizando Kubernetes
+### Exemplo com microsserviçoes em linux (mariadb | php | phppyadmin) em um ambiente kubernetes
 ![ScreenShot](PNGs/img.png)
 
 Este exemplo foi criado em um pc local com:
