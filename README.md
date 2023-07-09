@@ -1,5 +1,5 @@
-# Implantando aplicação web, em microsserviços, utilizando Kubernetes
-### Exemplo com microsserviçoes em linux (mariadb | php | phppyadmin) em um ambiente kubernetes
+# Aplicação web, distribuída em microsserviços, em Kubernetes
+### Exemplo de aplicação web (mariadb | php | phppyadmin) em microsserviçoes. 
 ![ScreenShot](PNGs/img.png)
 
 Este exemplo foi criado em um pc local com:
