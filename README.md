@@ -1,8 +1,6 @@
-# kubernetes LAMP - linux|mariadb|php
-### Basic Tutorial to create manifests to deploy app php in kubernetes environment
+# kubernetes + Docker - linux | mariadb | php | phppyadmin
+### Exemplo de implementação de containers docker em um ambiente kubernetes
 ![ScreenShot](PNGs/img.png)
-
-Exemplo básico com o objetivo de ensinar containers docker em um ambiente kubernetes
 
 Este exemplo foi criado em um pc local com:
 * Windows 11 / Mac OS Monterey
