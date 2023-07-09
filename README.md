@@ -1,4 +1,4 @@
-# Aplicação web, distribuída em microsserviços, em Kubernetes
+# Aplicação web, distribuída em microsserviços, utilizando Kubernetes
 ### Exemplo de aplicação web (mariadb | php | phppyadmin) em microsserviçoes. 
 ![ScreenShot](PNGs/img.png)
 
