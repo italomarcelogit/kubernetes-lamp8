@@ -1,19 +1,9 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: db
-spec:
-  ports:
-  - port: 3306
-  selector:
-    app: db
-  clusterIP: None
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: db
@@ -25,10 +15,10 @@ spec:
         app: db
     spec:
       containers:
-      - image: mariadb:10.2
+      - image: mariadb
         name: db
         env:
-          # não faça isso em produção, utilize secrets
+          # não faça isso em produção, utilize secrets do kubernetes
         - name: MYSQL_ROOT_PASSWORD
           value: test
         - name: MYSQL_USER
@@ -41,9 +31,26 @@ spec:
         - containerPort: 3306
           name: db
         volumeMounts:
-        - name: mysql-persistent-storage
+        - name: mariadb-initdb
+          mountPath: /docker-entrypoint-initdb.d
+        - name: maria-persistent-storage
           mountPath: /var/lib/mysql
       volumes:
-      - name: mysql-persistent-storage
+      - name: mariadb-initdb
+        configMap:
+          name: mariadb-initdb-config
+      - name: maria-persistent-storage
         persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          claimName: mariadb-pv-claim
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb-initdb-config
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS sistema;
+    USE sistema;
+    CREATE TABLE Visitante (id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,vnome varchar(50) NOT NULL,vcargo varchar(50) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    INSERT INTO Visitante (id, vnome, vcargo) VALUES (1, "Joao", "Coder"), (2, "Maria", "Publisher"), (3, "Andrea", "Designer");

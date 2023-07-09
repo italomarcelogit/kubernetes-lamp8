@@ -4,10 +4,10 @@ metadata:
   name: imc-srv-lamp
 spec:
   selector:
-    app: imc-lamp7
+    app: imc-lamp8
 # se nodeport   , descomente as linhas abaixo 
   ports:
-    - port: 8080 # porta do nodeport
+    - port: 80 # porta do nodeport
       targetPort: 80 # porta do containerPort do deployment
       nodePort: 30000 # porta do loadbalancer
   type: NodePort

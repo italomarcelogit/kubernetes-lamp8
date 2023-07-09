@@ -5,22 +5,23 @@
 Exemplo básico com o objetivo de ensinar containers docker em um ambiente kubernetes
 
 Este exemplo foi criado em um pc local com:
-* Windows 11
+* Windows 11 / Mac OS Monterey
 * Docker Desktop com Kubernetes ativado
-  + Será necessário o comando kubectl. Link p/ o site do [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
-  + Vamos instalar também o minikube, que também está no link acima, para ter uma visão kubernetes como o GCP por exemplo.
+  + Será necessário o comando kubectl. Link p/ o site do [Kubernetes](https://kubernetes.io/docs/tasks/tools/).
 * IDE a gosto, no meu caso utilizei o VSCode
 
 
 # Explicando o que contém no repositório
 
 ### diretório yaml-maria/
-* contém o manifesto deployment.yaml que cria o serviço db (no caso mariadb) e também sobe o deployment com 1 pod para o host db
+* contém o manifesto deployment.yaml que:
+  + criará o serviço IMC-SRV-MARIADB (no caso mariadb) 
+  + implentará um deployment com 2 pods propostos para executar o mariadb server, com o database e tabela necessária para o exemplo
   + subirá o serviço na porta padrão 3306
 * contém o volume.yaml que criará um volume persistente, ou seja, em caso de reinicio do serviço, os dados não serão perdidos
   + importante reforçar que este script é um exemplo simples, com usuário e senha exposto no código
   + uma boa prática é utilizar secrets, mas como o objetivo é de introdução, seguiremos com este exemplo
-* importante: o container do mariadb terá acesso somente interno, ou seja, somente os serviços do cluster que será criado
+* importante: o container do mariadb terá acesso somente interno (CLUSTER IP), ou seja, somente os serviços do cluster que será criado
 
 ### diretório yaml-php/
 * contém o manifesto deployment.yaml que cria o deployment para subir 3 pods o serviço web
@@ -40,21 +41,22 @@ Este exemplo foi criado em um pc local com:
   + subirá o serviço na porta padrão 8081
   + Para esta aplicação estar disponível na internet, terá que fazer a mesma coisa em relação nodePort para LoadBalancer.
   
-### script kube.bat
-* script criado como bat file (windows). Para linux, é só adaptá-lo.
+### script container.sh ou container.bat
+* script criado para facilitar a execução dos comandos do kubernetes.
 * este será sempre utilizado para subir os manifestos no cluster (manifesto do mariadb, da aplicação web php e da aplicação phpmyadmin)
 * o core deste script está conceituado no comando kubectl para aplicar manifestos yamls ou para excluí-los
-* contém as ações start e del
-  + start, sobe o serviço, deployment e seus pods e também o replica set
-  + del, remove todos os serviços, deployments, pods e replica set
-  + comando: kube.bat start, kube.bat del ou somente kube.bat para listar os serviços e deployments
+* contém as ações iniciar / parar / reiniciar / excluir / ajuda
+  + iniciar, implementará toda a aplicação no cluster kubernetes: serviços, deployments e seus pods, PVs e PVCs e replica set
+  + parar, para toda a implementação (deleta todos os pods, deployments, servicos e replicasets) mas não deleta os dados
+  + excluir, executa o comando parar e exclui definitivamente todos os dados
+  + ajuda: exemplifica como executar os comandos como ./container.sh iniciar ou container.bat parar 
 * sugiro aprender sobre os comandos kubectl para poder se aproveitar de mais comandos interessantes do kubernetes
 
 
 # VAMOS EXECUTAR AGORA ESSA APLICAÇÃO NA SUA MÁQUINA
 * instale todas as aplicações comentadas anteriormente
 * abra o docker desktop e, em configurações, veja se o kubernetes está ativo. Senão tiver, ative-o
-* execute o comando kube.bat start
+* execute o comando container.bat iniciar ou ./container.s
 * aguarde alguns instantes execute o seguinte comando kube.bat [sem nenhuma ação] ou o comando kubectl get deploymnts até obter o resultado abaixo:
 ![ScreenShot](PNGs/kubectl-deploy.png)
 
