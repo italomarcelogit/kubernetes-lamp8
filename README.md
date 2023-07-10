@@ -13,7 +13,7 @@ Este exemplo foi criado em um pc local com:
 
 ### diretório yaml-maria/
 * contém o manifesto deployment.yaml que:
-  + criará o serviço IMC-SRV-MARIADB (no caso mariadb) 
+  + criará o serviço DB (no caso mariadb server) 
   + implentará um deployment com 2 pods propostos para executar o mariadb server, com o database e tabela necessária para o exemplo
   + subirá o serviço na porta padrão 3306
 * contém o volume.yaml que criará um volume persistente, ou seja, em caso de reinicio do serviço, os dados não serão perdidos

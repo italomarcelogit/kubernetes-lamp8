@@ -40,7 +40,9 @@ if [$1] == [ajuda] (
   echo Para PARAR a implementação de containers, digite: ./container parar
   echo Para EXCLUIR OS DADOS de uma implementaçao, digite: ./container excluir
 )
-
-kubectl get pv
-kubectl get pvc
-kubectl get deployments
+if [%1] == [show] (
+    echo Exibindo os deployments
+    kubectl get deployments
+    echo Exibindo os services
+    kubectl get services
+)
